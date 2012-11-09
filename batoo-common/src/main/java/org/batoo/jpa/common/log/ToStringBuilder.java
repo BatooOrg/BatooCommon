@@ -213,7 +213,6 @@ public class ToStringBuilder extends ReflectionToStringBuilder {
 	 *            the detail level to set
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	public static void setDetailLevel(DetailLevel level) {
 		ToStringBuilder.level.set(level);
@@ -224,7 +223,6 @@ public class ToStringBuilder extends ReflectionToStringBuilder {
 	 *            the instance
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	public ToStringBuilder(Object object) {
 		super(object, ToStringBuilder.getStyle(ToStringBuilder.level.get()));
@@ -237,7 +235,6 @@ public class ToStringBuilder extends ReflectionToStringBuilder {
 	 *            the static detail level
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	public ToStringBuilder(Object object, DetailLevel level) {
 		super(object, ToStringBuilder.getStyle(level));
@@ -251,7 +248,6 @@ public class ToStringBuilder extends ReflectionToStringBuilder {
 	 * @return <code>this</code>
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	public ToStringBuilder excludeFieldNames(String... fieldNames) {
 		super.setExcludeFieldNames(fieldNames);

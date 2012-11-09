@@ -31,7 +31,6 @@ public class BatooException extends RuntimeException {
 	/**
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	public BatooException() {
 		super();
@@ -42,7 +41,6 @@ public class BatooException extends RuntimeException {
 	 *            the detail message. The detail message is saved for later retrieval by the {@link #getMessage()} method.
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	public BatooException(String message) {
 		super(message);
@@ -56,7 +54,6 @@ public class BatooException extends RuntimeException {
 	 *            indicates that the cause is nonexistent or unknown.)
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	public BatooException(String message, Throwable cause) {
 		super(message, cause);
@@ -68,7 +65,6 @@ public class BatooException extends RuntimeException {
 	 *            indicates that the cause is nonexistent or unknown.)
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	public BatooException(Throwable cause) {
 		super(cause);

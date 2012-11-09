@@ -34,7 +34,6 @@ public abstract class AbstractAccessor {
 	 * @return the value of the member
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	public abstract Object get(Object instance);
 
@@ -47,7 +46,6 @@ public abstract class AbstractAccessor {
 	 *            the value to set
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	public abstract void set(Object instance, Object value);
 }

@@ -27,7 +27,6 @@ import com.google.common.collect.Lists;
 
 /**
  * 
- * 
  * @author hceylan
  * @since $version
  */
@@ -41,7 +40,6 @@ public class BatooUtils {
 	 * @return the acronym
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	public static String acronym(String name) {
 		final StringBuilder builder = new StringBuilder();
@@ -69,7 +67,6 @@ public class BatooUtils {
 	 *            the type of the collections
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	public static <E> void addAll(Collection<? extends E> source, Collection<E> target) {
 		if (source instanceof List) {
@@ -91,7 +88,6 @@ public class BatooUtils {
 	 * @return the indented string
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	public static String indent(String str) {
 		if (StringUtils.isBlank(str)) {
@@ -109,7 +105,6 @@ public class BatooUtils {
 	 * @return the converted string
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	public static String lower(String string) {
 		return string != null ? string.toLowerCase() : null;
@@ -125,7 +120,6 @@ public class BatooUtils {
 	 *            the type of the collecions
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	public static <X> List<X> subtract(final Collection<X> a, final Collection<X> b) {
 		final List<X> list = Lists.newArrayList(a);
@@ -145,7 +139,6 @@ public class BatooUtils {
 	 * @return the indented string
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	public static String tree(String str) {
 		if (StringUtils.isBlank(str)) {
@@ -163,7 +156,6 @@ public class BatooUtils {
 	 * @return the converted string
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	public static String upper(String string) {
 		return string != null ? string.toUpperCase() : null;

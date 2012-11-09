@@ -46,7 +46,6 @@ public class PropertyDescriptor {
 	 *            the reader method
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	public PropertyDescriptor(Class<?> clazz, String name, Method reader) {
 		super();
@@ -63,7 +62,6 @@ public class PropertyDescriptor {
 	 * @return the name of the PropertyDescriptor
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	public String getName() {
 		return this.name;
@@ -75,7 +73,6 @@ public class PropertyDescriptor {
 	 * @return the reader of the PropertyDescriptor
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	public Method getReader() {
 		return this.reader;
@@ -87,7 +84,6 @@ public class PropertyDescriptor {
 	 * @return the writer of the PropertyDescriptor
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	public Method getWriter() {
 		return this.writer;

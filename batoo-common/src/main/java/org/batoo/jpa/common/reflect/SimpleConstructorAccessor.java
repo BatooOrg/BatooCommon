@@ -36,7 +36,6 @@ public class SimpleConstructorAccessor extends ConstructorAccessor {
 	 *            the constructor
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	public SimpleConstructorAccessor(Constructor<?> constructor) {
 		super();

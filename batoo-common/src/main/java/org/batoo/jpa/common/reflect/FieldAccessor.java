@@ -65,7 +65,6 @@ public class FieldAccessor extends AbstractAccessor {
 	 *            the field to access
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	public FieldAccessor(Field field) {
 		super();
@@ -111,7 +110,6 @@ public class FieldAccessor extends AbstractAccessor {
 	 * @return
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	private PrimitiveType getPrimitiveType() {
 		final Class<?> type = this.field.getType();

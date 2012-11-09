@@ -53,7 +53,6 @@ public abstract class ConstructorAccessor {
 	 * @see Constructor#newInstance(Object...)
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	public abstract Object newInstance(Object[] args)
 		throws InstantiationException, IllegalArgumentException, InvocationTargetException, IllegalAccessException;

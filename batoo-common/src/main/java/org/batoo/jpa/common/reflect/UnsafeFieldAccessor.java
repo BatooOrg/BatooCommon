@@ -65,7 +65,6 @@ public class UnsafeFieldAccessor extends AbstractAccessor {
 	 *            the field to access
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	@SuppressWarnings("restriction")
 	public UnsafeFieldAccessor(Field field) {
@@ -130,7 +129,6 @@ public class UnsafeFieldAccessor extends AbstractAccessor {
 	 * @return
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	private PrimitiveType getPrimitiveType() {
 		final Class<?> type = this.field.getType();

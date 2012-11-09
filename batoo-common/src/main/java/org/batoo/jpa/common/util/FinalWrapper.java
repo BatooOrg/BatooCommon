@@ -39,7 +39,6 @@ public class FinalWrapper<T> {
 	 *            the wrapped value
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	public FinalWrapper(T value) {
 		this.value = value;

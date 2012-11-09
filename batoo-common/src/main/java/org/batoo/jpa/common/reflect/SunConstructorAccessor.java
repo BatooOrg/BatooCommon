@@ -36,7 +36,6 @@ public class SunConstructorAccessor extends ConstructorAccessor {
 	 *            the constructor
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	public SunConstructorAccessor(Object constructor) {
 		this.constructor = (sun.reflect.ConstructorAccessor) constructor;

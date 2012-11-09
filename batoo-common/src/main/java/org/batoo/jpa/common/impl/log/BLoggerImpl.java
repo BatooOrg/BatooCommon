@@ -89,7 +89,6 @@ public class BLoggerImpl implements BLogger {
 	 *            the wrapped logger
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	public BLoggerImpl(Logger logger) {
 		this.logger = logger;
@@ -150,7 +149,6 @@ public class BLoggerImpl implements BLogger {
 	 * @param message
 	 *            the message
 	 */
-
 	@Override
 	public void debug(String message) {
 		this.debug(null, message, BLoggerImpl.NULL_ARRAY);
@@ -164,7 +162,6 @@ public class BLoggerImpl implements BLogger {
 	 * @param params
 	 *            the params to the message
 	 */
-
 	@Override
 	public void debug(String message, Object... params) {
 		this.debug(null, message, params);
@@ -178,7 +175,6 @@ public class BLoggerImpl implements BLogger {
 	 * @param message
 	 *            the message
 	 */
-
 	@Override
 	public void debug(Throwable t, String message) {
 		this.debug(t, message, BLoggerImpl.NULL_ARRAY);
@@ -194,7 +190,6 @@ public class BLoggerImpl implements BLogger {
 	 * @param params
 	 *            the params to the message
 	 */
-
 	@Override
 	public void debug(Throwable t, String message, Object... params) {
 		if (this.logger.isDebugEnabled()) {
@@ -213,7 +208,6 @@ public class BLoggerImpl implements BLogger {
 	 * @param message
 	 *            the message
 	 */
-
 	@Override
 	public void error(String message) {
 		this.error(null, message, BLoggerImpl.NULL_ARRAY);
@@ -227,7 +221,6 @@ public class BLoggerImpl implements BLogger {
 	 * @param params
 	 *            the params to the message
 	 */
-
 	@Override
 	public void error(String message, Object... params) {
 		this.error(null, message, params);
@@ -241,7 +234,6 @@ public class BLoggerImpl implements BLogger {
 	 * @param message
 	 *            the message
 	 */
-
 	@Override
 	public void error(Throwable t, String message) {
 		this.error(t, message, BLoggerImpl.NULL_ARRAY);
@@ -276,7 +268,6 @@ public class BLoggerImpl implements BLogger {
 	 * @param message
 	 *            the message
 	 */
-
 	@Override
 	public void fatal(String message) {
 		this.trace(null, message, BLoggerImpl.NULL_ARRAY);
@@ -290,7 +281,6 @@ public class BLoggerImpl implements BLogger {
 	 * @param params
 	 *            the params to the message
 	 */
-
 	@Override
 	public void fatal(String message, Object... params) {
 		this.fatal(null, message, params);
@@ -304,7 +294,6 @@ public class BLoggerImpl implements BLogger {
 	 * @param message
 	 *            the message
 	 */
-
 	@Override
 	public void fatal(Throwable t, String message) {
 		this.fatal(t, message, BLoggerImpl.NULL_ARRAY);
@@ -320,7 +309,6 @@ public class BLoggerImpl implements BLogger {
 	 * @param params
 	 *            the params to the message
 	 */
-
 	@Override
 	public void fatal(Throwable t, String message, Object... params) {
 		if (t != null) {
@@ -355,7 +343,6 @@ public class BLoggerImpl implements BLogger {
 	 * @param message
 	 *            the message
 	 */
-
 	@Override
 	public void info(String message) {
 		this.info(null, message, BLoggerImpl.NULL_ARRAY);
@@ -369,7 +356,6 @@ public class BLoggerImpl implements BLogger {
 	 * @param params
 	 *            the params to the message
 	 */
-
 	@Override
 	public void info(String message, Object... params) {
 		this.info(null, message, params);
@@ -383,7 +369,6 @@ public class BLoggerImpl implements BLogger {
 	 * @param message
 	 *            the message
 	 */
-
 	@Override
 	public void info(Throwable t, String message) {
 		this.info(t, message, BLoggerImpl.NULL_ARRAY);
@@ -399,7 +384,6 @@ public class BLoggerImpl implements BLogger {
 	 * @param params
 	 *            the params to the message
 	 */
-
 	@Override
 	public void info(Throwable t, String message, Object... params) {
 		if (this.logger.isInfoEnabled()) {
@@ -417,7 +401,6 @@ public class BLoggerImpl implements BLogger {
 	 * 
 	 * @return if the logger instance enabled for the DEBUG level
 	 */
-
 	@Override
 	public boolean isDebugEnabled() {
 		return this.logger.isDebugEnabled();
@@ -428,7 +411,6 @@ public class BLoggerImpl implements BLogger {
 	 * 
 	 * @return if the logger instance enabled for the ERROR level
 	 */
-
 	@Override
 	public boolean isErrorEnabled() {
 		return this.logger.isErrorEnabled();
@@ -439,7 +421,6 @@ public class BLoggerImpl implements BLogger {
 	 * 
 	 * @return if the logger instance enabled for the INFO level
 	 */
-
 	@Override
 	public boolean isInfoEnabled() {
 		return this.logger.isInfoEnabled();
@@ -450,7 +431,6 @@ public class BLoggerImpl implements BLogger {
 	 * 
 	 * @return if the logger instance enabled for the TRACE level
 	 */
-
 	@Override
 	public boolean isTraceEnabled() {
 		return this.logger.isTraceEnabled();
@@ -461,7 +441,6 @@ public class BLoggerImpl implements BLogger {
 	 * 
 	 * @return if the logger instance enabled for the WARN level
 	 */
-
 	@Override
 	public boolean isWarnEnabled() {
 		return this.logger.isWarnEnabled();
@@ -475,7 +454,6 @@ public class BLoggerImpl implements BLogger {
 	 * @return the object
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	@Override
 	public Object lazyBoxed(final Object block) {
@@ -492,7 +470,6 @@ public class BLoggerImpl implements BLogger {
 	 * @return the object
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	@Override
 	public Object lazyBoxed(final Object block, final Object[] parameters) {
@@ -521,7 +498,6 @@ public class BLoggerImpl implements BLogger {
 	 * @param message
 	 *            the message
 	 */
-
 	@Override
 	public void trace(String message) {
 		this.trace(null, message, BLoggerImpl.NULL_ARRAY);
@@ -549,7 +525,6 @@ public class BLoggerImpl implements BLogger {
 	 * @param message
 	 *            the message
 	 */
-
 	@Override
 	public void trace(Throwable t, String message) {
 		this.trace(t, message, BLoggerImpl.NULL_ARRAY);
@@ -565,7 +540,6 @@ public class BLoggerImpl implements BLogger {
 	 * @param params
 	 *            the params to the message
 	 */
-
 	@Override
 	public void trace(Throwable t, String message, Object... params) {
 		if (this.logger.isTraceEnabled()) {
@@ -584,7 +558,6 @@ public class BLoggerImpl implements BLogger {
 	 * @param message
 	 *            the message
 	 */
-
 	@Override
 	public void warn(String message) {
 		this.warn(null, message, BLoggerImpl.NULL_ARRAY);
@@ -598,7 +571,6 @@ public class BLoggerImpl implements BLogger {
 	 * @param params
 	 *            the params to the message
 	 */
-
 	@Override
 	public void warn(String message, Object... params) {
 		this.warn(null, message, params);
@@ -612,7 +584,6 @@ public class BLoggerImpl implements BLogger {
 	 * @param message
 	 *            the message
 	 */
-
 	@Override
 	public void warn(Throwable t, String message) {
 		this.warn(t, message, BLoggerImpl.NULL_ARRAY);
@@ -628,7 +599,6 @@ public class BLoggerImpl implements BLogger {
 	 * @param params
 	 *            the params to the message
 	 */
-
 	@Override
 	public void warn(Throwable t, String message, Object... params) {
 		if (this.logger.isWarnEnabled()) {

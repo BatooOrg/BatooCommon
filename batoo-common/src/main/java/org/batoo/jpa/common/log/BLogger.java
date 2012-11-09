@@ -32,7 +32,6 @@ public interface BLogger {
 	 * @return the object
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	Object boxed(String block);
 
@@ -46,7 +45,6 @@ public interface BLogger {
 	 * @return the object
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	Object boxed(String block, Object[] parameters);
 
@@ -274,7 +272,6 @@ public interface BLogger {
 	 * @return the object
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	Object lazyBoxed(final Object block);
 
@@ -288,7 +285,6 @@ public interface BLogger {
 	 * @return the object
 	 * 
 	 * @since $version
-	 * @author hceylan
 	 */
 	Object lazyBoxed(final Object block, final Object[] parameters);
 
