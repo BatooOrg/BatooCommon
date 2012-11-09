@@ -24,7 +24,7 @@
 	<parent>
 		<artifactId>parent</artifactId>
 		<groupId>org.batoo.common</groupId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>1.0.1-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>batoo-common</artifactId>
