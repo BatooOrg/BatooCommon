@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.batoo.jpa.common.impl.log;
+package org.batoo.common.impl.log;
 
 import java.io.StringReader;
 import java.text.MessageFormat;
@@ -26,9 +26,9 @@ import java.util.concurrent.Callable;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
-import org.batoo.jpa.common.log.BLogger;
-import org.batoo.jpa.common.log.ToStringBuilder;
-import org.batoo.jpa.common.log.ToStringBuilder.DetailLevel;
+import org.batoo.common.log.BLogger;
+import org.batoo.common.log.ToStringBuilder;
+import org.batoo.common.log.ToStringBuilder.DetailLevel;
 import org.slf4j.Logger;
 import org.slf4j.Marker;
 import org.slf4j.MarkerFactory;

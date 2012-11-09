@@ -16,7 +16,7 @@
  * 51 Franklin Street, Fifth Floor
  * Boston, MA  02110-1301  USA
  */
-package org.batoo.jpa.common.util;
+package org.batoo.common.util;
 
 /**
  * The wrapper to use instead of double synchronized blocks.

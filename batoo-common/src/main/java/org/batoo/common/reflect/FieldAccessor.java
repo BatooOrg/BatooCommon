@@ -16,13 +16,13 @@
  * 51 Franklin Street, Fifth Floor
  * Boston, MA  02110-1301  USA
  */
-package org.batoo.jpa.common.reflect;
+package org.batoo.common.reflect;
 
 import java.lang.reflect.Field;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 
-import org.batoo.jpa.common.BatooException;
+import org.batoo.common.BatooException;
 
 /**
  * Accessor implementation of {@link AbstractAccessor} for the members of {@link Field}s.

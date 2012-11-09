@@ -16,7 +16,7 @@
  * 51 Franklin Street, Fifth Floor
  * Boston, MA  02110-1301  USA
  */
-package org.batoo.jpa.common.reflect;
+package org.batoo.common.reflect;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
@@ -36,9 +36,9 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
-import org.batoo.jpa.common.BatooException;
-import org.batoo.jpa.common.log.BLogger;
-import org.batoo.jpa.common.log.BLoggerFactory;
+import org.batoo.common.BatooException;
+import org.batoo.common.log.BLogger;
+import org.batoo.common.log.BLoggerFactory;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Predicate;

@@ -16,7 +16,7 @@
  * 51 Franklin Street, Fifth Floor
  * Boston, MA  02110-1301  USA
  */
-package org.batoo.jpa.common.log;
+package org.batoo.common.log;
 
 import java.util.Collection;
 import java.util.Iterator;

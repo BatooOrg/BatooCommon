@@ -16,40 +16,36 @@
  * 51 Franklin Street, Fifth Floor
  * Boston, MA  02110-1301  USA
  */
-package org.batoo.jpa.common.reflect;
-
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
+package org.batoo.common.reflect;
 
 /**
- * Constructor accessor for non-sun java environments.
+ * Abstract definition of accessors.
  * 
  * @author hceylan
  * @since $version
  */
-public class SimpleConstructorAccessor extends ConstructorAccessor {
-
-	private final Constructor<?> constructor;
+public abstract class AbstractAccessor {
 
 	/**
-	 * @param constructor
-	 *            the constructor
+	 * Returns the value of the member.
+	 * 
+	 * @param instance
+	 *            the instance of which the member value to return
+	 * @return the value of the member
 	 * 
 	 * @since $version
 	 */
-	public SimpleConstructorAccessor(Constructor<?> constructor) {
-		super();
-
-		this.constructor = constructor;
-		this.constructor.setAccessible(true);
-	}
+	public abstract Object get(Object instance);
 
 	/**
-	 * {@inheritDoc}
+	 * Sets the value of the member.
 	 * 
+	 * @param instance
+	 *            the instance of which the member will be set
+	 * @param value
+	 *            the value to set
+	 * 
+	 * @since $version
 	 */
-	@Override
-	public Object newInstance(Object[] args) throws InstantiationException, IllegalArgumentException, InvocationTargetException, IllegalAccessException {
-		return this.constructor.newInstance(args);
-	}
+	public abstract void set(Object instance, Object value);
 }

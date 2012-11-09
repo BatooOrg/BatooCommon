@@ -16,9 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.batoo.jpa.common.log;
+package org.batoo.common.log;
 
-import org.batoo.jpa.common.impl.log.BLoggerImpl;
+import org.batoo.common.impl.log.BLoggerImpl;
 import org.slf4j.LoggerFactory;
 
 /**
