@@ -26,6 +26,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.lang.reflect.TypeVariable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.security.AccessController;
@@ -43,6 +44,7 @@ import org.batoo.common.log.BLoggerFactory;
 import com.google.common.base.Joiner;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
 /**
@@ -62,6 +64,14 @@ public class ReflectHelper {
 
 	static {
 		unsafe = ReflectHelper.getUnSafe();
+	}
+
+	private static Class<?> checkAndReturn(Class<?> originalType, Method m, Class<?> actualType) {
+		if (!originalType.isAssignableFrom(actualType)) {
+			throw new IllegalArgumentException("Method " + m + " must return type of " + originalType.getName());
+		}
+
+		return actualType;
 	}
 
 	/**
@@ -205,6 +215,34 @@ public class ReflectHelper {
 	}
 
 	/**
+	 * Returns the actual type of the attribute, resolving generic types if necessary.
+	 * 
+	 * @param clazz
+	 *            the actual class
+	 * @param attributeName
+	 *            the name of the attribute
+	 * @param originalType
+	 *            th original type of the attribute
+	 * @return the actual type of the attribute
+	 * @param <T>
+	 *            the xpected type
+	 * 
+	 * @since $version
+	 */
+	@SuppressWarnings("unchecked")
+	public static <T> Class<T> getActualType(Class<?> clazz, String attributeName, Class<?> originalType) {
+		if (originalType.isPrimitive()) {
+			return (Class<T>) originalType;
+		}
+
+		final String methodName = "get" + StringUtils.capitalize(attributeName);
+
+		final Class<T> actualType = (Class<T>) ReflectHelper.getTypeImpl(clazz, originalType, methodName, Lists.<Type> newArrayList());
+
+		return actualType;
+	}
+
+	/**
 	 * Returns the annotation instance if the <code>member</code> has the <code>annotation</code>.
 	 * 
 	 * @param member
@@ -330,6 +368,47 @@ public class ReflectHelper {
 		}
 
 		return properties.toArray(new PropertyDescriptor[properties.size()]);
+	}
+
+	private static Class<?> getTypeImpl(Class<?> clazz, Class<?> originalType, String methodName, List<Type> arguments) {
+		final Map<TypeVariable<?>, Type> typeMap = Maps.newHashMap();
+
+		if (arguments.size() > 0) {
+			final TypeVariable<?>[] typeParameters = clazz.getTypeParameters();
+			for (int i = 0; i < typeParameters.length; i++) {
+				typeMap.put(typeParameters[i], arguments.get(i));
+			}
+		}
+
+		try {
+			final Method m = clazz.getDeclaredMethod(methodName);
+
+			final Type type = typeMap.get(m.getGenericReturnType());
+			if (type != null) {
+				return ReflectHelper.checkAndReturn(originalType, m, (Class<?>) type);
+			}
+
+			return ReflectHelper.checkAndReturn(originalType, m, m.getReturnType());
+		}
+		catch (final NoSuchMethodException e) {
+			final List<Type> typeArguments = Lists.newArrayList();
+
+			if (clazz.getGenericSuperclass() instanceof ParameterizedType) {
+				final ParameterizedType parameterizedType = (ParameterizedType) clazz.getGenericSuperclass();
+
+				for (final Type typeArgument : parameterizedType.getActualTypeArguments()) {
+					typeArguments.add(typeArgument);
+				}
+			}
+
+			final Class<?> superclass = clazz.getSuperclass();
+
+			if (superclass == Object.class) {
+				throw new IllegalArgumentException("Cannot determine generic type of " + clazz.getName() + "." + methodName);
+			}
+
+			return ReflectHelper.getTypeImpl(superclass, originalType, methodName, typeArguments);
+		}
 	}
 
 	private static sun.misc.Unsafe getUnSafe() {
