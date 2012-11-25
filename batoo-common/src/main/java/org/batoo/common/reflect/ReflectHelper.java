@@ -68,7 +68,7 @@ public class ReflectHelper {
 
 	private static Class<?> checkAndReturn(Class<?> originalType, Method m, Class<?> actualType) {
 		if (!originalType.isAssignableFrom(actualType)) {
-			throw new IllegalArgumentException("Method " + m + " must return type of " + originalType.getName());
+			ReflectHelper.LOG.warn("Method {0} must return type of {1}", m, originalType.getName());
 		}
 
 		return actualType;
@@ -397,14 +397,19 @@ public class ReflectHelper {
 				final ParameterizedType parameterizedType = (ParameterizedType) clazz.getGenericSuperclass();
 
 				for (final Type typeArgument : parameterizedType.getActualTypeArguments()) {
-					typeArguments.add(typeArgument);
+					if (typeArgument instanceof TypeVariable) {
+						typeArguments.add(typeMap.get(typeArgument));
+					}
+					else {
+						typeArguments.add(typeArgument);
+					}
 				}
 			}
 
 			final Class<?> superclass = clazz.getSuperclass();
 
 			if (superclass == Object.class) {
-				throw new IllegalArgumentException("Cannot determine generic type of " + clazz.getName() + "." + methodName);
+				return originalType;
 			}
 
 			return ReflectHelper.getTypeImpl(superclass, originalType, methodName, typeArguments);

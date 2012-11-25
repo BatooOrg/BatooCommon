@@ -43,4 +43,13 @@ public class FinalWrapper<T> {
 	public FinalWrapper(T value) {
 		this.value = value;
 	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 */
+	@Override
+	public String toString() {
+		return "FinalWrapper [value=" + this.value + "]";
+	}
 }
