@@ -94,27 +94,27 @@ public class ReflectHelper {
 			return value;
 		}
 
-		if (numberType == Integer.class) {
+		if ((numberType == Integer.class) || (numberType == Integer.TYPE)) {
 			return value.intValue();
 		}
 
-		if (numberType == Long.class) {
+		if ((numberType == Long.class) || (numberType == Long.TYPE)) {
 			return value.longValue();
 		}
 
-		if (numberType == Short.class) {
+		if ((numberType == Short.class) || (numberType == Short.TYPE)) {
 			return value.shortValue();
 		}
 
-		if (numberType == Byte.class) {
+		if ((numberType == Byte.class) || (numberType == Byte.TYPE)) {
 			return value.byteValue();
 		}
 
-		if (numberType == Float.class) {
+		if ((numberType == Float.class) || (numberType == Float.TYPE)) {
 			return value.floatValue();
 		}
 
-		if (numberType == Double.class) {
+		if ((numberType == Double.class) || (numberType == Double.TYPE)) {
 			return value.doubleValue();
 		}
 
