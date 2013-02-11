@@ -101,10 +101,6 @@ public class FastLinkedListIterator<E> implements ListIterator<E> {
 	 */
 	@Override
 	public E next() {
-		// if (!this.hasNext()) {
-		// throw new NoSuchElementException();
-		// }
-
 		if (this.forward) {
 			return this.realNext();
 		}

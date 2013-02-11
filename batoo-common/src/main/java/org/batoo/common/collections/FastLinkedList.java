@@ -484,6 +484,8 @@ public class FastLinkedList<E> extends AbstractSequentialList<E> implements List
 		return new FastLinkedListIterator<E>(this, index, true);
 	}
 
+	// Search Operations
+
 	/**
 	 * Returns the (non-null) Node at the specified element index.
 	 */
@@ -506,8 +508,6 @@ public class FastLinkedList<E> extends AbstractSequentialList<E> implements List
 		}
 	}
 
-	// Search Operations
-
 	/**
 	 * Adds the specified element as the tail (last element) of this list.
 	 * 
@@ -520,6 +520,8 @@ public class FastLinkedList<E> extends AbstractSequentialList<E> implements List
 	public boolean offer(E e) {
 		return this.add(e);
 	}
+
+	// Queue operations.
 
 	// Deque operations
 	/**
@@ -535,8 +537,6 @@ public class FastLinkedList<E> extends AbstractSequentialList<E> implements List
 		this.addFirst(e);
 		return true;
 	}
-
-	// Queue operations.
 
 	/**
 	 * Inserts the specified element at the end of this list.

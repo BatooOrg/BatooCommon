@@ -201,8 +201,18 @@ public class ReflectHelper {
 			return ReflectHelper.unsafe != null ? new UnsafeFieldAccessor((Field) javaMember) : new FieldAccessor((Field) javaMember);
 		}
 		else {
-			final String name = javaMember.getName().startsWith(ReflectHelper.IS_PREFIX) ? javaMember.getName().substring(2)
-				: javaMember.getName().substring(3);
+			String name = javaMember.getName().startsWith(ReflectHelper.IS_PREFIX) ? javaMember.getName().substring(2) : javaMember.getName().substring(3);
+
+			name = StringUtils.uncapitalize(name);
+
+			final Class<?> declaringClass = javaMember.getDeclaringClass();
+			final PropertyDescriptor[] properties = ReflectHelper.getProperties(declaringClass);
+			for (final PropertyDescriptor descriptor : properties) {
+				if (descriptor.getName().equals(name)) {
+					return new PropertyAccessor(descriptor);
+				}
+			}
+
 			Field field;
 			try {
 				field = javaMember.getDeclaringClass().getDeclaredField(StringUtils.uncapitalize(name));
