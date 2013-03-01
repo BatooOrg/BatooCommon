@@ -22,6 +22,9 @@ import java.lang.reflect.Field;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 
+import org.batoo.common.log.BLogger;
+import org.batoo.common.log.BLoggerFactory;
+
 /**
  * Accessor implementation of {@link AbstractAccessor} for the members of {@link Field}s.
  * 
@@ -30,6 +33,8 @@ import java.security.PrivilegedAction;
  */
 public class UnsafeFieldAccessor extends AbstractAccessor {
 
+	private static final BLogger LOG = BLoggerFactory.getLogger(UnsafeFieldAccessor.class);
+	
 	private enum PrimitiveType {
 		BOOLEAN(Boolean.TYPE),
 
@@ -165,7 +170,8 @@ public class UnsafeFieldAccessor extends AbstractAccessor {
 			}
 		}
 		else {
-			switch (this.primitiveType) {
+			if (value != null) {
+				switch (this.primitiveType) {
 				case BOOLEAN:
 					if (value instanceof Number) {
 						ReflectHelper.unsafe.putBoolean(instance, this.fieldOffset, ((Number) value).byteValue() == 0 ? false : true);
@@ -193,13 +199,39 @@ public class UnsafeFieldAccessor extends AbstractAccessor {
 					ReflectHelper.unsafe.putByte(instance, this.fieldOffset, ((Number) value).byteValue());
 					break;
 				default: // CHAR
-					if (value == null) {
-						ReflectHelper.unsafe.putChar(instance, this.fieldOffset, '\u0000');
-					}
-					else {
-						ReflectHelper.unsafe.putChar(instance, this.fieldOffset, (Character) value);
-					}
+					ReflectHelper.unsafe.putChar(instance, this.fieldOffset, (Character) value);
 					break;
+				}
+			} 
+			else { // Assign the default values
+				UnsafeFieldAccessor.LOG.debug("Primitive field {0} can't be null, using default value instead.", this.field);
+				
+				switch (this.primitiveType) {
+				case BOOLEAN:
+					ReflectHelper.unsafe.putBoolean(instance, this.fieldOffset, false);
+					break;
+				case INTEGER:
+					ReflectHelper.unsafe.putInt(instance, this.fieldOffset, 0);
+					break;
+				case FLOAT:
+					ReflectHelper.unsafe.putFloat(instance, this.fieldOffset, 0.0f);
+					break;
+				case DOUBLE:
+					ReflectHelper.unsafe.putDouble(instance, this.fieldOffset, 0.0d);
+					break;
+				case LONG:
+					ReflectHelper.unsafe.putLong(instance, this.fieldOffset, 0l);
+					break;
+				case SHORT:
+					ReflectHelper.unsafe.putShort(instance, this.fieldOffset, (short) 0);
+					break;
+				case BYTE:
+					ReflectHelper.unsafe.putByte(instance, this.fieldOffset, (byte) 0);
+					break;
+				default: // CHAR
+					ReflectHelper.unsafe.putChar(instance, this.fieldOffset, '\u0000');
+					break;
+				}
 			}
 		}
 	}

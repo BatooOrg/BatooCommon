@@ -32,6 +32,7 @@ import java.math.BigInteger;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -65,8 +66,29 @@ public class ReflectHelper {
 	static {
 		unsafe = ReflectHelper.getUnSafe();
 	}
-
+	
+	private final static Map<Class<?>, Class<?>> wrappersMap = new HashMap<Class<?>, Class<?>>();
+	static {
+		wrappersMap.put(boolean.class, Boolean.class);
+		wrappersMap.put(byte.class, Byte.class);
+		wrappersMap.put(short.class, Short.class);
+		wrappersMap.put(char.class, Character.class);
+		wrappersMap.put(int.class, Integer.class);
+		wrappersMap.put(long.class, Long.class);
+		wrappersMap.put(float.class, Float.class);
+		wrappersMap.put(double.class, Double.class);
+	}
+	
 	private static Class<?> checkAndReturn(Class<?> originalType, Method m, Class<?> actualType) {
+		if (originalType.isPrimitive()){
+			ReflectHelper.LOG.debug("Autoboxing primitive type {0} to test match with return type of method {1}", originalType.getName(), m);
+			originalType = wrappersMap.get(originalType);
+		}
+		if (actualType.isPrimitive()){
+			ReflectHelper.LOG.debug("Autoboxing return type of method {0}", m);
+			actualType = wrappersMap.get(actualType);
+		}
+		
 		if (!originalType.isAssignableFrom(actualType)) {
 			ReflectHelper.LOG.warn("Method {0} must return type of {1}", m, originalType.getName());
 		}
