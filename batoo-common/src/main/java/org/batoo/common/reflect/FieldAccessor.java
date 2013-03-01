@@ -23,6 +23,8 @@ import java.security.AccessController;
 import java.security.PrivilegedAction;
 
 import org.batoo.common.BatooException;
+import org.batoo.common.log.BLogger;
+import org.batoo.common.log.BLoggerFactory;
 
 /**
  * Accessor implementation of {@link AbstractAccessor} for the members of {@link Field}s.
@@ -32,6 +34,8 @@ import org.batoo.common.BatooException;
  */
 public class FieldAccessor extends AbstractAccessor {
 
+	private static final BLogger LOG = BLoggerFactory.getLogger(FieldAccessor.class);
+	
 	private enum PrimitiveType {
 		BOOLEAN(Boolean.TYPE),
 
@@ -145,7 +149,8 @@ public class FieldAccessor extends AbstractAccessor {
 				}
 			}
 			else {
-				switch (this.primitiveType) {
+				if (value != null) {
+					switch (this.primitiveType) {
 					case BOOLEAN:
 						if (value instanceof Number) {
 							this.field.set(instance, ((Number) value).byteValue() == 0 ? false : true);
@@ -173,13 +178,39 @@ public class FieldAccessor extends AbstractAccessor {
 						this.field.set(instance, ((Number) value).byteValue());
 						break;
 					default: // CHAR
-						if (value == null) {
-							this.field.set(instance, '\u0000');
-						}
-						else {
-							this.field.set(instance, value);
-						}
+						this.field.set(instance, value);
 						break;
+					}
+				} 
+				else { // Assign the default values
+					FieldAccessor.LOG.debug("Primitive field {0} can't be null, using default value instead.", this.field);
+					
+					switch (this.primitiveType) {
+						case BOOLEAN:
+							this.field.set(instance, false);
+							break;
+						case INTEGER:
+							this.field.set(instance, 0);
+							break;
+						case FLOAT:
+							this.field.set(instance, 0.0f);
+							break;
+						case DOUBLE:
+							this.field.set(instance, 0.0d);
+							break;
+						case LONG:
+							this.field.set(instance, 0l);
+							break;
+						case SHORT:
+							this.field.set(instance, (short) 0);
+							break;
+						case BYTE:
+							this.field.set(instance, (byte) 0);
+							break;
+						default: // CHAR
+							this.field.set(instance, '\u0000');
+							break;
+					}
 				}
 			}
 		}
